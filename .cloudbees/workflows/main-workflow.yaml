@@ -15,18 +15,6 @@ jobs:
     outputs:
       CODE_COVERAGE: ${{ steps.RunUnitTest.outputs.CODE_COVERAGE }}
     steps:
-      - uses: cloudbees-io/ghactions-run-workflow@v2
-        name: Run GHA Workflow
-        kind: test
-        continue-on-error: true
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          org-name: cloudbees-days
-          repo-name: hackers-organized
-          branch-name: main
-          workflow-name: test-and-build-image
-          test-type: JUnit
-          test-result-location: junit.xml
       - uses: cloudbees-io/checkout@v1
         name: Get source code
         continue-on-error: true
